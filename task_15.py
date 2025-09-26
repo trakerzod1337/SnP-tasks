@@ -11,11 +11,11 @@ class BlockTranspositionCipher:
         
         self.encrypt_order = [0] * self.block_size
         for new_pos, (char, orig_pos) in enumerate(sorted_chars):
-            self.encrypt_order[orig_pos] = new_pos
+            self.encrypt_order[new_pos] = orig_pos
 
         self.decrypt_order = [0] * self.block_size
         for new_pos, (char, orig_pos) in enumerate(sorted_chars):
-            self.decrypt_order[new_pos] = orig_pos
+            self.decrypt_order[orig_pos] = new_pos
 
     def _validate_key(self, key):
         if key is None:
@@ -63,3 +63,4 @@ class BlockTranspositionCipher:
             processed_block = processed_block.rstrip()
         return processed_block
         
+
